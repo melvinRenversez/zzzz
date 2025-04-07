@@ -1,0 +1,219 @@
+/* Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    padding: 20px;
+}
+
+/* Personnalisation de la scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Largeur de la scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555; /* Couleur du "pouce" de la scrollbar */
+    border-radius: 10px; /* Coins arrondis pour un look plus doux */
+    transition: background-color 0.3s ease; /* Transition pour l'effet au survol */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #007bff; /* Couleur du "pouce" au survol */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #121212; /* Couleur de la piste de la scrollbar */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+::-webkit-scrollbar-track:hover {
+    background-color: #1e1e1e; /* Couleur de la piste au survol */
+}
+
+
+/* .add Button */
+.ref {
+    position: absolute;
+    z-index: 10000;
+    top: 20px;
+    right: 20px;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+}
+
+.ref a {
+    display: block; /* Fait que le lien occupe tout l'espace disponible */
+    background-color: #007bff;
+    color: white;
+    padding: 15px; /* Taille du bouton */
+    font-size: 16px; /* Taille de la police */
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-sizing: border-box; /* Pour inclure la marge dans la largeur */
+}
+
+.ref a:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* Effet de "survol" avec un léger déplacement */
+}
+
+.ref a:active {
+    background-color: #004085;
+    transform: translateY(1px); /* Effet de "pression" lors du clic */
+}
+
+
+/* Conteneur principal */
+.content {
+    width: 700px;
+    max-width: 90%;
+    background: #1e1e1e;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    height: 90dvh; 
+}
+
+/* Barre de recherche */
+.search {
+    position: sticky;
+    top: 0;
+    background: #1e1e1e;
+    padding: 10px;
+    z-index: 10;
+    border-bottom: 2px solid #444;
+    display: flex;
+    gap: 10px;
+}
+
+/* Input de recherche */
+.search input {
+    flex: 3;
+    padding: 12px;
+    border: 1px solid #444;
+    background: #252525;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search input:focus {
+    border-color: #007bff;
+    background: #2e2e2e;
+    outline: none;
+}
+
+/* Select */
+.search select {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #444;
+    background: #252525;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Liste des connaissances avec scroll */
+.knowledge {
+    flex: 1; /* Prend l'espace restant */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Card des connaissances */
+.box {
+    background: #252525;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Partie haute de la box */
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.top h2 {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.top h4 {
+    font-size: 16px;
+    color: #bbb;
+}
+
+/* Partie basse (contenu du code) */
+.bottom pre {
+    background: #1b1b1b;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+    color: #e0e0e0;
+}
+
+.auteur{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#clear{
+    height: 100%;
+    aspect-ratio: 1;
+    border: 1px solid #444;
+    background: #252525;
+    color: #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#clear:hover{
+    background: #007bff;
+}
+
+#clear svg{
+    width: 60%;
+    height: 60%;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="content" id="content">
+            <div class="left">
+                <h1>Connection</h1>
+                <form id="formCon">
+
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" autocomplete="off" required>
+        
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" autocomplete="off" required>
+        
+        
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" id="mdp" name="mdp" autocomplete="off" required>
+        
+                    <button id="btnCon">Se connecter</button>
+
+                    <div class="switch">
+                        <span id="conSwitch">
+                            Je n'ais pas de compte ?
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <h1>Inscription</h1>
+                <form id="formIns">
+
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" autocomplete="off" required>
+        
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" autocomplete="off" required>
+        
+        
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" id="mdp" name="mdp" autocomplete="off" required>
+        
+                    <button id="btnIns">S'inscrire</button>
+
+
+                    <div class="switch">
+                        <span id="insSwitch">
+                            J'ai deja un compte ?
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+
+    $("#conSwitch").on("click", function(e) {
+        $("#content").addClass("actif");
+    })
+    
+    
+    $("#insSwitch").on("click", function(e) {
+        $("#content").removeClass("actif");
+    })
+
+    $("#btnCon").on("click", function(e) {
+        e.preventDefault();
+    
+        $.post("./database/connection.php", $("#formCon").serialize(), function(data) {
+            window.location.href="./accueil.php";
+        });
+    });
+
+    $("#btnIns").on("click", function(e) {
+        e.preventDefault();
+    
+        $.post({
+            url: "./database/inscription.php",
+            data: $("#formIns").serialize(),
+            dataType: "json", // 👈 C'est cette ligne qui change tout
+            success: function(data) {
+                console.log(data.message);
+                alert(data.message);
+            },
+            error: function(xhr, status, error) {
+                console.error("Erreur AJAX :", status, error);
+            }
+        });
+    });
+    
+
+
+
+</script>
+
+</html>
